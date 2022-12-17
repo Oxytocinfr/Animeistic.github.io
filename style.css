@@ -5,6 +5,8 @@
     --black:#000000;
     --light--color:#181818;
     --box--shadow:0.5rem 1.5rem rgba(0,0,0,.1);
+    --white:#fff;
+    --grey: #808080;
 }
 
 *{
@@ -23,6 +25,10 @@ html{
     font-size: 62.5%;
     overflow-x: hidden;
     scroll-padding-top: 5.5rem;
+}
+
+body{
+    background-color: black;
 }
 
 header{
@@ -88,6 +94,186 @@ header .icons #menu-bars{
     display: none;
 }
 
+header .icons #search{
+    display: none;
+}
+
+.search_bar{
+    background-color: var(--white)!important;
+    border: 2px solid var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    font-size: 1rem;
+    color: var(--black);
+    font-family: inherit;
+    text-align: left;
+    text-transform: uppercase;
+    width: 20rem;
+}
+
+.search_bar:focus{
+    outline: 0;
+    background-color: var(--black);
+}
+.search_bar::placeholder{
+    color: var(--black);
+    text-align: left;
+}
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.movie{
+    width: 300px;
+    margin: 1rem;
+    border-radius: 3px;
+    box-shadow: 0.2px 4px 5px rgba(0,0,0,0.1);
+    background-color: var(--secondary-color);
+    position: relative;
+    overflow: hidden;
+}
+.movie img{
+    width: 100%;
+}
+.movie-info{
+    color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem 1rem;
+    letter-spacing: 0.5px;
+}
+.movie-info h3{
+    color: #eee;
+}
+.movie-info span{
+    background-color: var(--primary-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px; 
+    font-weight: bold;
+}
+.movie-info span.green{
+    color: lightgreen;
+}
+.movie-info span.orange{
+    color: orange;
+}
+.movie-info span.red{
+    color: red;
+}
+.overview{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    padding: 1rem;
+    max-height: 100%;
+    transform: translateY(101%);
+    transition: transform 0.3s ease-in;
+}
+.movie:hover .overview{
+    transform: translateY(0);
+}
+
+.pagination{
+    display: flex;
+    margin: 10px 30px;
+    align-items: center;
+    justify-content: center;
+    color: #eee;
+}
+
+.page{
+    /*padding: 100px;*/
+    cursor: pointer;
+}
+.page.disabled{
+    cursor: not-allowed;
+    color: gray;
+}
+.current{
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 600;
+} 
+
+footer {
+    background: var(--grey);
+    padding: 5rem 0;
+    box-shadow: inset 0 1.5rem 1.5rem rgba(0, 0, 0, 0.2);
+}
+
+.footer__socials {
+    margin-inline: auto;
+    width: fit-content;
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.footer__socials a {
+    background: var(--grey);
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    padding-top: 0.4rem;
+    color: var(--black);
+    transition:  var(--transition);
+}
+
+.footer__socials a:hover {
+    background: var(--white);
+    color: var(--black);
+}
+
+.footer__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+    color: var(--black);
+}
+
+footer h4 {
+    color: var(--black);
+    margin-bottom: 0.6rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-left: 9rem;
+}
+
+footer ul li {
+    padding: 0.4rem 0;
+}
+
+footer ul a{
+    opacity: 0.75;
+    color: var(--white);
+    transition: var(--transition);
+}
+
+
+footer ul a:hover {
+    letter-spacing: 0.2rem;
+    opacity: 1;
+    color: var(--grey);
+}
+
+.footer__copyright {
+    /*border-top: 2px solid var(--color-bg);*/
+    margin-top: 4rem;
+    text-align: center;
+}
+
+
 /*media query*/
 @media(max-width: 991px){
     html{
@@ -125,11 +311,34 @@ header .icons #menu-bars{
         font-size: 2rem;
         background: var(--red);
     }
-     
+
+    header .icons #search{
+        display: inline-block;
+    }
+
+    header .search_bar{
+        position: relative;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--black);
+        border-top: .1rem solid rgba(0,0,0,.2);
+        border-bottom: .1rem solid rgba(0,0,0,.2);
+        padding: 1rem;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+    header .search_bar.active{
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    
+    header .search_bar::placeholder{
+        color: var(--black);
+        text-align: left;
+    }
 }
 @media(max-width: 468px){
     html{
         font-size: 50%;
-
     }
 }
